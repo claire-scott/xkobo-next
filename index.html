@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>XKOBO Mobile</title>
+<meta name="description" content="XKOBO – the classic fortress-busting shooter, in your browser and on your phone.">
+<meta name="theme-color" content="#05060d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app" data-state="loading">
+
+  <header id="hud">
+    <div class="cell score"><span class="lbl">SCORE</span><span id="hud-score" class="val">000000000</span></div>
+    <div class="cell"><span class="lbl">STAGE</span><span id="hud-stage" class="val">01</span></div>
+    <div class="cell"><span class="lbl">SHIPS</span><span id="hud-ships" class="val">5</span></div>
+    <button id="btn-pause" class="icon-btn" aria-label="Pause">❚❚</button>
+  </header>
+
+  <main id="screenwrap">
+    <canvas id="game" aria-label="Game playfield"></canvas>
+    <div id="banner" aria-live="polite"></div>
+  </main>
+
+  <div id="radarwrap" aria-hidden="true">
+    <canvas id="radar"></canvas>
+    <div id="keyhint">
+      <b>MOVE</b> arrows / WASD<br>
+      <b>FIRE</b> space / shift<br>
+      <b>PAUSE</b> P / esc
+    </div>
+  </div>
+
+  <div id="stickzone" aria-hidden="true"></div>
+  <div id="dpad" role="group" aria-label="Direction pad"></div>
+  <button id="fire" aria-label="Fire"><span>FIRE</span></button>
+
+  <!-- title / splash -->
+  <section id="menu" class="overlay" hidden>
+    <canvas id="attract"></canvas>
+    <div class="menu-inner">
+      <canvas id="logo" aria-label="XKOBO"></canvas>
+      <p class="tagline">MOBILE EDITION</p>
+
+      <div id="gameover" class="gameover" hidden>
+        <div class="go-title">GAME OVER</div>
+        <div id="go-line"></div>
+      </div>
+
+      <button id="btn-start" class="big-btn blink">▶ START</button>
+
+      <div id="stage-pick" class="stage-pick">
+        <button id="stage-minus" class="icon-btn" aria-label="Previous stage">◀</button>
+        <div><span class="lbl">STAGE</span> <span id="stage-num" class="val">01</span></div>
+        <button id="stage-plus" class="icon-btn" aria-label="Next stage">▶</button>
+      </div>
+
+      <div class="row">
+        <button id="btn-scores" class="small-btn">HI-SCORES</button>
+        <button id="btn-help" class="small-btn">HOW TO PLAY</button>
+        <button id="btn-options" class="small-btn">OPTIONS</button>
+      </div>
+      <p id="menu-high" class="hi">HI 000000000</p>
+      <p class="credit">Based on XKOBO © 1995–96 Akira Higuchi · GPL v2</p>
+      <p class="credit tag">Adapted for web and mobile 2026<br>Claire Scott CJS//DEV</p>
+    </div>
+  </section>
+
+  <section id="pause" class="overlay dim" hidden>
+    <div class="panel">
+      <h2>PAUSED</h2>
+      <button id="btn-resume" class="big-btn">RESUME</button>
+      <button id="btn-options2" class="small-btn">OPTIONS</button>
+      <button id="btn-quit" class="small-btn">QUIT TO TITLE</button>
+    </div>
+  </section>
+
+  <section id="panel-scores" class="overlay dim" hidden>
+    <div class="panel">
+      <h2>HI-SCORES</h2>
+      <ol id="score-list"></ol>
+      <button class="small-btn close">CLOSE</button>
+    </div>
+  </section>
+
+  <section id="panel-help" class="overlay dim" hidden>
+    <div class="panel help">
+      <h2>HOW TO PLAY</h2>
+      <p>Wipe out every <b>fortress core</b> on the map to clear the stage. Shoot the cannons and walls to light a fuse and chain-blast a route to the core.</p>
+      <p>Your ship <b>never stops</b> – steer with the pad, and it keeps flying the way you last pointed. <b>FIRE</b> shoots forwards <i>and</i> backwards at once.</p>
+      <p>The world wraps around. Watch the radar and don't touch the fortress walls.</p>
+      <p>Extra ship at 2,000 points, then every 3,000.</p>
+      <p class="keys"><b>Touch</b> pad + FIRE · <b>Keys</b> arrows/WASD, space, P · <b>Pad</b> stick, A, Start</p>
+      <button class="small-btn close">GOT IT</button>
+    </div>
+  </section>
+
+  <section id="panel-options" class="overlay dim" hidden>
+    <div class="panel">
+      <h2>OPTIONS</h2>
+      <button id="opt-autofire" class="small-btn wide">AUTO-FIRE: OFF</button>
+      <button id="opt-pad" class="small-btn wide">PAD: FLOATING</button>
+      <p class="note">Floating pad appears under your thumb and follows it. Auto-fire shoots continuously (F on keyboard).</p>
+      <button class="small-btn close">DONE</button>
+    </div>
+  </section>
+
+  <section id="loading" class="overlay"><p class="blink">LOADING…</p></section>
+  <div id="rotate-hint" hidden></div>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
