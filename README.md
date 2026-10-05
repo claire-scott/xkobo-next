@@ -45,4 +45,6 @@ New for the web: `render.js` (playfield → canvas), `input.js` (keyboard / touc
 
 ## Licence
 
-xkobo is © 1995–96 Akira Higuchi, GNU GPL v2. This port is a derivative work and is therefore also GPL v2.
+xkobo is © 1995–96 Akira Higuchi and released under the GNU General Public License, version 2 or (at your
+option) any later version. This port is a derivative work, so it is distributed under the same terms –
+see [LICENSE](LICENSE). New code for the web/mobile adaptation is © 2026 Claire Scott (CJS//DEV), also under the GPL.
